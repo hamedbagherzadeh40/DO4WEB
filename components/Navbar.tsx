@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
           </div>
         </div>
         <a 
-          href="https://wa.me/905312816518" 
+          href="https://wa.me/989925843628" 
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#8B2252] text-white text-sm font-bold hover:bg-[#6b1a3f] transition-all transform hover:scale-105 shadow-lg shadow-[#8B2252]/20"

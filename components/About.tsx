@@ -43,7 +43,7 @@ const About: React.FC = () => {
                     <Sparkles className="w-6 h-6 text-[#8B2252] shrink-0 mt-1 opacity-60" />
                     <p className="text-xl md:text-2xl font-medium text-[#1A202C] leading-relaxed italic">
                       فرآیند ما یک خط مستقیم نیست، <br className="hidden md:block" />
-                      یک <span className="text-[#8B2252] font-black">سفر شاعرانه</span> از ایده تا اجراست.
+                      یک <span className="text-[#8B2252] font-black">سفر خلاقانه</span> از ایده تا اجراست.
                     </p>
                   </div>
                 </div>

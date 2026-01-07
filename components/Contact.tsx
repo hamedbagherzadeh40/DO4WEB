@@ -3,7 +3,7 @@ import React from 'react';
 import { MessageCircle, Mail } from 'lucide-react';
 
 const Contact: React.FC = () => {
-  const whatsappUrl = "https://wa.me/905312816518";
+  const whatsappUrl = "https://wa.me/989925843628";
   const email = "hello@dochar.studio";
 
   return (

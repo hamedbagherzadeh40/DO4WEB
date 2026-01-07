@@ -3,7 +3,7 @@ import React from 'react';
 import { Instagram, Twitter, Linkedin, Mail, MessageCircle } from 'lucide-react';
 
 const Footer: React.FC = () => {
-  const whatsappUrl = "https://wa.me/905312816518";
+  const whatsappUrl = "https://wa.me/989925843628";
 
   return (
     <footer className="bg-[#1A202C] text-white pt-20 pb-10">
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
               <li>تهران، استودیو خلاق دو<span className="text-white">۴</span></li>
               <li dir="ltr" className="text-right">
                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white/70 transition-colors">
-                  +90 531 281 6518
+                  +98 992 584 3628
                 </a>
               </li>
             </ul>

@@ -54,7 +54,7 @@ const Hero: React.FC = () => {
         
         <div className="flex flex-col md:flex-row items-center justify-center gap-6">
           <a 
-            href="https://wa.me/905312816518" 
+            href="https://wa.me/989925843628" 
             target="_blank"
             rel="noopener noreferrer"
             className="w-full md:w-auto px-10 py-5 rounded-full bg-[#8B2252] text-white font-bold text-lg hover:bg-[#6b1a3f] transition-all transform hover:scale-105 shadow-xl shadow-[#8B2252]/20 text-center flex items-center justify-center gap-3"
