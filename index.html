@@ -13,8 +13,7 @@
 
     <!-- Preload critical assets -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;700;900&display=swap" as="style">
-    <link rel="preload" href="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1472&auto=format&fit=crop" as="image">
-
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;700;900&display=swap" rel="stylesheet">
     
@@ -28,44 +27,35 @@
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
       }
-      .perspective-2000 {
-        perspective: 2000px;
-      }
-      .perspective-1000 {
-        perspective: 1000px;
-      }
-      /* Will-change optimization for smooth hardware acceleration */
+      .perspective-2000 { perspective: 2000px; }
+      .perspective-1000 { perspective: 1000px; }
       .gpu-accelerated {
         will-change: transform, opacity;
         backface-visibility: hidden;
       }
-      /* Custom scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #F0F4F8;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #8B225244;
-        border-radius: 10px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #8B2252;
-      }
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #F0F4F8; }
+      ::-webkit-scrollbar-thumb { background: #8B225244; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: #8B2252; }
     </style>
-  <script type="importmap">
+
+    <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "react/jsx-runtime": "https://esm.sh/react@19.0.0/jsx-runtime",
+    "lucide-react": "https://esm.sh/lucide-react@0.475.0?external=react",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+    "react/": "https://esm.sh/react@^19.2.3/"
   }
 }
 </script>
-</head>
+  </head>
   <body>
     <div id="root"></div>
+    <!-- فراخوانی صریح فایل ورودی برای اطمینان از اجرا -->
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>
