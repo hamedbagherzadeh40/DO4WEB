@@ -1,102 +1,73 @@
 
 import React from 'react';
-import { Layout, Video, PenTool, Globe } from 'lucide-react';
+import { Zap, Gem, Video, Monitor, MousePointer2 } from 'lucide-react';
 
-const Services: React.FC = () => {
-  const services = [
-    {
-      title: 'طراحی وب‌سایت تک‌صفحه‌ای',
-      desc: 'ساخت تجربه‌های دیجیتال مدرن و متمرکز که داستان برند شما را به ساده‌ترین شکل روایت می‌کنند.',
-      icon: <Layout className="w-8 h-8" />,
+interface ServicesProps {
+  lang: 'fa' | 'en';
+}
+
+const Services: React.FC<ServicesProps> = ({ lang }) => {
+  const content = {
+    fa: {
+      title: "ما چه می‌کنیم؟",
+      sub: "OUR SERVICES",
+      items: [
+        { title: 'لانچ سریع (۷ روزه)', desc: 'فرآیند اختصاصی دو۴ برای رساندن ایده شما به بازار در کمترین زمان.', icon: <Zap />, cta: 'لانچ فوری' },
+        { title: 'استراتژی برندینگ', desc: 'خلق شخصیتی ماندگار برای برند که فراتر از یک لوگوی ساده است.', icon: <Gem />, cta: 'مشاوره برندینگ' },
+        { title: 'تولید ویدیو اینستاگرام', desc: 'تیزرهای سینمایی و ویدیوهای استراتژیک برای درخشش در شبکه‌های اجتماعی.', icon: <Video />, cta: 'تولید ویدیو' },
+        { title: 'طراحی لندینگ‌پیج', desc: 'خانه‌های دیجیتال با نرخ تبدیل بالا که روایتگر هویت کسب‌وکار شما هستند.', icon: <Monitor />, cta: 'سفارش لندینگ', active: true }
+      ]
     },
-    {
-      title: 'داستان‌سرایی بصری',
-      desc: 'استفاده از قدرت تصویر و حرکت برای برقراری ارتباط عمیق و صادقانه با مخاطب.',
-      icon: <Video className="w-8 h-8" />,
-    },
-    {
-      title: 'تولید محتوای ویدئویی',
-      desc: 'ساخت ویدئوهای خلاقانه و موشن‌گرافیک برای شبکه‌های اجتماعی با استانداردهای سینمایی.',
-      icon: <PenTool className="w-8 h-8" />,
-    },
-    {
-      title: 'استراتژی برند خلاق',
-      desc: 'کمک به برندها برای یافتن صدای منحصر‌به‌فرد و ارتباطی غیردستکاری‌شده.',
-      icon: <Globe className="w-8 h-8" />,
+    en: {
+      title: "What We Do",
+      sub: "OUR SERVICES",
+      items: [
+        { title: 'Rapid Launch (7 Days)', desc: 'DO4 exclusive process to get your idea to market in record time.', icon: <Zap />, cta: 'Launch Now' },
+        { title: 'Branding Strategy', desc: 'Creating a lasting personality for your brand beyond just a logo.', icon: <Gem />, cta: 'Consultancy' },
+        { title: 'Instagram Video', desc: 'Cinematic teasers and strategic videos for social media brilliance.', icon: <Video />, cta: 'Video Production' },
+        { title: 'Landing Page Design', desc: 'High-conversion digital homes that tell your business story.', icon: <Monitor />, cta: 'Order Landing', active: true }
+      ]
     }
-  ];
+  }[lang];
 
   return (
-    <section id="services" className="py-24 bg-white relative overflow-hidden">
-      {/* Background Animated Text - Purple color with low opacity for cinematic feel */}
-      <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center overflow-hidden">
-        <div 
-          className="text-[12rem] md:text-[25rem] font-black text-[#8B2252]/[0.06] whitespace-nowrap select-none transition-opacity duration-1000"
-          style={{ 
-            animation: 'floating-text 25s ease-in-out infinite alternate',
-            transform: 'rotate(-8deg)',
-            filter: 'blur(2px)'
-          }}
-        >
-          دچار یعنی عاشق
-        </div>
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col md:flex-row items-start justify-between mb-20 gap-10">
-          <div className="max-w-2xl">
-            <h2 className="text-4xl font-black text-[#1A202C] mb-8 border-r-4 border-[#8B2252] pr-4">ما چه می‌کنیم؟</h2>
-            <div className="space-y-6">
-              <p className="text-2xl md:text-3xl font-bold text-[#1A202C] leading-tight">
-                سایت برای ما یک موجود زنده است <br/>
-                که با آن هویت شما را نشان دهیم.
-              </p>
-              
-              <div className="pt-4 border-t border-[#1A202C]/5">
-                <p className="text-xl md:text-2xl text-[#1A202C]/50 font-extralight italic leading-relaxed tracking-wide">
-                  من وضو با تپش پنجره‌ها می‌گیرم...
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="text-sm font-bold text-[#8B2252] uppercase tracking-widest bg-[#8B2252]/5 px-6 py-3 rounded-2xl self-start">
-            CREATIVE ECOSYSTEM
-          </div>
+    <section id="services" className="py-24 lg:py-32 bg-[#F0F4F8] relative">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col md:flex-row items-center justify-between mb-16 lg:mb-20 gap-4">
+          <h2 className="text-4xl lg:text-5xl font-black text-[#1A202C]">{content.title}</h2>
+          <div className="hidden lg:block h-px flex-1 mx-12 bg-[#1A202C]/10"></div>
+          <span className="text-sm font-bold text-[#8B2252] tracking-widest uppercase opacity-60">{content.sub}</span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((s, idx) => (
-            <div key={idx} className="group p-8 rounded-3xl bg-[#F0F4F8] hover:bg-[#8B2252] transition-all duration-500 cursor-default shadow-sm hover:shadow-2xl hover:-translate-y-2">
-              <div className="mb-6 text-[#8B2252] group-hover:text-white transition-colors">
-                {s.icon}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          {content.items.map((item, idx) => (
+            <div 
+              key={idx} 
+              className={`p-10 flex flex-col items-center text-center transition-all duration-500 group ${
+                item.active 
+                ? 'bg-white rounded-[3rem] lg:rounded-[3.5rem] shadow-xl scale-100 lg:scale-105 z-10 border border-[#8B2252]/5' 
+                : 'rounded-3xl hover:bg-white/50'
+              }`}
+            >
+              <div className={`mb-8 p-4 rounded-2xl ${item.active ? 'bg-[#F0F4F8] text-[#1A202C]' : 'text-[#1A202C]/40 group-hover:text-[#8B2252]'}`}>
+                {React.cloneElement(item.icon as React.ReactElement, { className: "w-8 h-8" })}
               </div>
-              <h3 className="text-xl font-bold text-[#1A202C] group-hover:text-white mb-4 transition-colors">
-                {s.title}
-              </h3>
-              <p className="text-[#1A202C]/60 group-hover:text-white/80 transition-colors leading-relaxed">
-                {s.desc}
-              </p>
+
+              <h3 className="text-xl lg:text-2xl font-black text-[#1A202C] mb-4">{item.title}</h3>
+              <p className="text-[#1A202C]/60 leading-relaxed mb-10 text-sm font-medium">{item.desc}</p>
+
+              <div className="mt-auto flex flex-col items-center gap-2">
+                {item.active && <MousePointer2 className="w-5 h-5 text-[#1A202C]/40 animate-bounce" />}
+                <button className={`text-xs font-bold uppercase tracking-wider ${
+                  item.active ? 'text-[#1A202C] border-b border-[#1A202C]/20 pb-1' : 'text-[#1A202C]/40 group-hover:text-[#8B2252]'
+                }`}>
+                  {item.cta}
+                </button>
+              </div>
             </div>
           ))}
         </div>
       </div>
-
-      <style>{`
-        @keyframes floating-text {
-          0% {
-            transform: rotate(-8deg) translateX(80px) translateY(0);
-            opacity: 0.03;
-          }
-          50% {
-            opacity: 0.07;
-            transform: rotate(-6deg) translateX(0) translateY(-20px);
-          }
-          100% {
-            transform: rotate(-10deg) translateX(-80px) translateY(20px);
-            opacity: 0.03;
-          }
-        }
-      `}</style>
     </section>
   );
 };

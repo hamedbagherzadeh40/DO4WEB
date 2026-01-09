@@ -1,52 +1,92 @@
 
 import React, { useState, useEffect } from 'react';
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, Languages, Menu, X } from 'lucide-react';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  lang: 'fa' | 'en';
+  setLang: (l: 'fa' | 'en') => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ lang, setLang }) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const content = {
+    fa: {
+      services: "خدمات",
+      portfolio: "نمونه‌کارها",
+      about: "داستان ما",
+      cta: "شروع همکاری"
+    },
+    en: {
+      services: "Services",
+      portfolio: "Work",
+      about: "Story",
+      cta: "Start Collab"
+    }
+  };
+
+  const t = content[lang];
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      isScrolled ? 'bg-white/80 backdrop-blur-xl py-4 shadow-[0_4px_30px_rgba(0,0,0,0.03)]' : 'bg-transparent py-8'
+    <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
+      isScrolled ? 'bg-white/90 backdrop-blur-xl py-3 shadow-lg' : 'bg-transparent py-8'
     }`}>
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <div className="flex items-center space-x-12 space-x-reverse">
-          <a href="#" className="text-3xl font-black tracking-tighter text-[#1A202C] transition-transform hover:scale-105">
-            دو<span className="text-[#8B2252]">۴</span>
+        <div className="flex items-center gap-12">
+          <a href="#" className="text-3xl font-black tracking-tighter text-[#1A202C]">
+            DO<span className="text-[#8B2252]">4</span>
           </a>
-          <div className="hidden md:flex items-center space-x-8 space-x-reverse text-sm font-bold text-[#1A202C]/60">
-            <a href="#services" className="hover:text-[#8B2252] transition-colors relative group">
-              خدمات
-              <span className="absolute -bottom-1 right-0 w-0 h-0.5 bg-[#8B2252] transition-all group-hover:w-full"></span>
-            </a>
-            <a href="#portfolio" className="hover:text-[#8B2252] transition-colors relative group">
-              نمونه‌کارها
-              <span className="absolute -bottom-1 right-0 w-0 h-0.5 bg-[#8B2252] transition-all group-hover:w-full"></span>
-            </a>
-            <a href="#about" className="hover:text-[#8B2252] transition-colors relative group">
-              داستان ما
-              <span className="absolute -bottom-1 right-0 w-0 h-0.5 bg-[#8B2252] transition-all group-hover:w-full"></span>
-            </a>
+          
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex items-center gap-8 text-sm font-bold text-[#1A202C]/60">
+            <a href="#services" className="hover:text-[#8B2252] transition-colors">{t.services}</a>
+            <a href="#portfolio" className="hover:text-[#8B2252] transition-colors">{t.portfolio}</a>
+            <a href="#about" className="hover:text-[#8B2252] transition-colors">{t.about}</a>
           </div>
         </div>
-        <a 
-          href="https://wa.me/989925843628" 
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#8B2252] text-white text-sm font-bold hover:bg-[#6b1a3f] transition-all transform hover:scale-105 shadow-lg shadow-[#8B2252]/20"
-        >
-          <MessageCircle className="w-5 h-5 text-[#25D366] fill-[#25D366]/20" />
-          <span>شروع همکاری</span>
-        </a>
+
+        <div className="flex items-center gap-4">
+          {/* Language Switcher */}
+          <button 
+            onClick={() => setLang(lang === 'fa' ? 'en' : 'fa')}
+            className="p-2 rounded-full hover:bg-[#8B2252]/10 transition-colors text-[#8B2252]"
+          >
+            <Languages size={20} />
+          </button>
+
+          {/* Desktop CTA */}
+          <a 
+            href="https://wa.me/989925843628" 
+            target="_blank"
+            className="hidden lg:flex items-center gap-2 px-6 py-3 rounded-full bg-[#8B2252] text-white text-sm font-bold shadow-lg shadow-[#8B2252]/20 hover:scale-105 transition-transform"
+          >
+            <MessageCircle className="w-5 h-5" />
+            <span>{t.cta}</span>
+          </a>
+
+          {/* Mobile Toggle */}
+          <button className="lg:hidden" onClick={() => setMobileMenu(!mobileMenu)}>
+            {mobileMenu ? <X /> : <Menu />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {mobileMenu && (
+        <div className="lg:hidden absolute top-full left-0 w-full bg-white shadow-2xl p-6 flex flex-col gap-6 font-bold animate-in slide-in-from-top-4">
+          <a href="#services" onClick={() => setMobileMenu(false)}>{t.services}</a>
+          <a href="#portfolio" onClick={() => setMobileMenu(false)}>{t.portfolio}</a>
+          <a href="#about" onClick={() => setMobileMenu(false)}>{t.about}</a>
+          <a href="https://wa.me/989925843628" className="bg-[#8B2252] text-white p-4 rounded-xl text-center">{t.cta}</a>
+        </div>
+      )}
     </nav>
   );
 };
